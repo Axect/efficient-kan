@@ -153,7 +153,7 @@ class KANLinear(torch.nn.Module):
     def forward(self, x: torch.Tensor):
         assert x.size(-1) == self.in_features
         original_shape = x.shape
-        x = x.view(-1, self.in_features)
+        x = x.reshape(-1, self.in_features)
 
         base_output = F.linear(self.base_activation(x), self.base_weight)
         spline_output = F.linear(
